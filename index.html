@@ -125,81 +125,42 @@
   .card::before { width: 120px; height: 120px; top: -40px; left: -40px; }
   .card::after  { width: 80px;  height: 80px;  bottom: -25px; right: -25px; }
 
-  /* ====== CARD 1 – Azul Vivo ====== */
+  /* ====== CORES DOS CARDS ====== */
   .c1 { background: linear-gradient(135deg,#1565c0,#42a5f5); color: #fff; }
-  .c1::before,.c1::after { background: #fff; }
-  .c1 .badge { background: rgba(255,255,255,.25); color: #fff; }
-  .c1 .qr-wrap { box-shadow: 0 4px 16px rgba(0,0,0,.25); }
-
-  /* ====== CARD 2 – Verde Floresta ====== */
   .c2 { background: linear-gradient(135deg,#1b5e20,#66bb6a); color: #fff; }
-  .c2::before,.c2::after { background: #fff; }
-  .c2 .badge { background: rgba(255,255,255,.22); color: #fff; }
-
-  /* ====== CARD 3 – Laranja Energia ====== */
   .c3 { background: linear-gradient(135deg,#e65100,#ffb74d); color: #fff; }
-  .c3::before,.c3::after { background: #fff; }
-  .c3 .badge { background: rgba(255,255,255,.25); color: #fff; }
-
-  /* ====== CARD 4 – Roxo Mágico ====== */
   .c4 { background: linear-gradient(135deg,#4a148c,#ce93d8); color: #fff; }
-  .c4::before,.c4::after { background: #fff; }
-  .c4 .badge { background: rgba(255,255,255,.22); color: #fff; }
-
-  /* ====== CARD 5 – Rosa Candy ====== */
   .c5 { background: linear-gradient(135deg,#880e4f,#f48fb1); color: #fff; }
-  .c5::before,.c5::after { background: #fff; }
-  .c5 .badge { background: rgba(255,255,255,.25); color: #fff; }
-
-  /* ====== CARD 6 – Azul Céu + Branco ====== */
   .c6 { background: #fff; color: #1565c0; border: 3px solid #90caf9; }
-  .c6::before,.c6::after { background: #bbdefb; opacity: .6; }
-  .c6 .badge { background: #e3f2fd; color: #1565c0; }
-  .c6 .title, .c6 .cta { color: #1565c0; }
-  .c6 .tagline { color: #1976d2; }
-
-  /* ====== CARD 7 – Amarelo Sol ====== */
   .c7 { background: linear-gradient(135deg,#f9a825,#fff176); color: #4e342e; }
-  .c7::before,.c7::after { background: #fff9c4; }
-  .c7 .badge { background: rgba(0,0,0,.12); color: #4e342e; }
-
-  /* ====== CARD 8 – Teal Futurista ====== */
   .c8 { background: linear-gradient(135deg,#006064,#4dd0e1); color: #fff; }
-  .c8::before,.c8::after { background: #fff; }
-  .c8 .badge { background: rgba(255,255,255,.2); color: #fff; }
-
-  /* ====== CARD 9 – Vermelho + Branco ====== */
   .c9 { background: #fff; color: #b71c1c; border: 3px solid #ef9a9a; }
-  .c9::before,.c9::after { background: #ffcdd2; opacity: .7; }
-  .c9 .badge { background: #ffebee; color: #b71c1c; }
-  .c9 .title, .c9 .cta { color: #b71c1c; }
-  .c9 .tagline { color: #c62828; }
-
-  /* ====== CARD 10 – Gradiente Arco-Íris ====== */
   .c10 { background: linear-gradient(135deg,#7b1fa2,#e91e63,#ff9800,#4caf50,#2196f3); color: #fff; }
-  .c10::before,.c10::after { background: #fff; }
-  .c10 .badge { background: rgba(255,255,255,.28); color: #fff; }
+
+  .c1::before, .c1::after, .c2::before, .c2::after, .c3::before, .c3::after, 
+  .c4::before, .c4::after, .c5::before, .c5::after, .c8::before, .c8::after, 
+  .c10::before, .c10::after { background: #fff; }
+
+  .c6::before, .c6::after { background: #bbdefb; opacity: .6; }
+  .c9::before, .c9::after { background: #ffcdd2; opacity: .7; }
+  .c7::before, .c7::after { background: #fff9c4; }
 
   @media print {
     body { padding: 10px; background: #fff; }
     .grid { gap: 20px; }
     .card { break-inside: avoid; }
+    .page-title, .subtitle { margin-bottom: 20px; }
   }
 </style>
 </head>
 <body>
-<h1 class="page-title">🎮 Educ Games – Cartões de Anúncio</h1>
-<p class="subtitle">10 modelos prontos para divulgação — imprima, compartilhe ou use digitalmente</p>
 
-<!-- QR base64 -->
-<img id="qr-src" src="https://github.com/alvesdealmeida/cartaoEDUC/blob/main/Plataforma.jpg " width="100"  style="display:none"/>
-<script>
-const qrB64 = document.getElementById('qr-src').src;
-</script>
+<h1 class="page-title">🎮 Educ Games – Cartões de Anúncio</h1>
+<p class="subtitle">10 modelos prontos para divulgação — imprima ou compartilhe</p>
+
+<img id="qr-src" src="https://raw.githubusercontent.com/alvesdealmeida/cartaoEDUC/main/Plataforma.jpg" style="display:none"/>
 
 <div class="grid">
-
-  <!-- CARD 1 -->
   <div class="card c1">
     <div class="badge">🎯 Educação Digital</div>
     <div class="icon-wrap">🎮</div>
@@ -210,7 +171,6 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="stars">⭐⭐⭐⭐⭐</div>
   </div>
 
-  <!-- CARD 2 -->
   <div class="card c2">
     <div class="badge">🌱 Aprender Brincando</div>
     <div class="icon-wrap">📚</div>
@@ -221,7 +181,6 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="stars">🌟🌟🌟🌟🌟</div>
   </div>
 
-  <!-- CARD 3 -->
   <div class="card c3">
     <div class="badge">🔥 Novidade!</div>
     <div class="icon-wrap">🏆</div>
@@ -232,7 +191,6 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="stars">🎖️🎖️🎖️🎖️🎖️</div>
   </div>
 
-  <!-- CARD 4 -->
   <div class="card c4">
     <div class="badge">✨ Magia do Saber</div>
     <div class="icon-wrap">🧠</div>
@@ -243,7 +201,6 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="stars">💫💫💫💫💫</div>
   </div>
 
-  <!-- CARD 5 -->
   <div class="card c5">
     <div class="badge">💖 Educação para Todos</div>
     <div class="icon-wrap">🌈</div>
@@ -254,7 +211,6 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="stars">🎀🎀🎀🎀🎀</div>
   </div>
 
-  <!-- CARD 6 -->
   <div class="card c6">
     <div class="badge">🚀 Futuro do Aprendizado</div>
     <div class="icon-wrap">🎓</div>
@@ -265,7 +221,6 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="stars">🚀🚀🚀🚀🚀</div>
   </div>
 
-  <!-- CARD 7 -->
   <div class="card c7">
     <div class="badge">☀️ Diversão Garantida</div>
     <div class="icon-wrap">🎲</div>
@@ -276,7 +231,6 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="stars">☀️☀️☀️☀️☀️</div>
   </div>
 
-  <!-- CARD 8 -->
   <div class="card c8">
     <div class="badge">💡 Inovação Educacional</div>
     <div class="icon-wrap">🤖</div>
@@ -287,7 +241,6 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="stars">💡💡💡💡💡</div>
   </div>
 
-  <!-- CARD 9 -->
   <div class="card c9">
     <div class="badge">❤️ Aprenda com Paixão</div>
     <div class="icon-wrap">📖</div>
@@ -298,7 +251,6 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="stars">❤️❤️❤️❤️❤️</div>
   </div>
 
-  <!-- CARD 10 -->
   <div class="card c10">
     <div class="badge">🎉 Plataforma Completa</div>
     <div class="icon-wrap">🌍</div>
@@ -308,12 +260,19 @@ const qrB64 = document.getElementById('qr-src').src;
     <div class="cta">📲 Acesse via QR Code e entre<br>no mundo Educ Games!</div>
     <div class="stars">🎉🎊🎈🎊🎉</div>
   </div>
-
 </div>
 
 <script>
-  // Inject QR code into all cards
-  document.querySelectorAll('.qr-img').forEach(img => { img.src = qrB64; });
+  // O JavaScript aguarda a página carregar, pega o link da imagem e injeta em todos os src vazios
+  window.onload = function() {
+    const qrSource = document.getElementById('qr-src').src;
+    const allQrImages = document.querySelectorAll('.qr-img');
+    
+    allQrImages.forEach(img => {
+      img.src = qrSource;
+    });
+  };
 </script>
+
 </body>
 </html>
