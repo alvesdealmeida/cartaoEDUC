@@ -2,273 +2,191 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Educ Games – 10 Cartões de Anúncio</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<title>Impressão - Cartões Educ Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
   body {
     background: #f0f4ff;
     font-family: 'Nunito', sans-serif;
-    padding: 40px 20px;
+    padding: 20px;
   }
-  h1.page-title {
-    font-family: 'Fredoka One', cursive;
-    text-align: center;
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-  }
-  p.subtitle {
-    text-align: center;
-    color: #777;
-    margin-bottom: 40px;
-    font-size: 0.95rem;
-  }
-  .grid {
+
+  /* Configuração da Grade para Impressão A4 */
+  .print-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 36px;
-    max-width: 1200px;
+    grid-template-columns: repeat(2, 9cm); /* 2 colunas de 9cm */
+    gap: 10px;
+    justify-content: center;
+    max-width: 21cm; /* Largura folha A4 */
     margin: 0 auto;
   }
 
-  /* ---- BASE CARD ---- */
+  /* Estilo do Cartão de Visita (9x5cm) */
   .card {
-    border-radius: 24px;
+    width: 9cm;
+    height: 5cm;
+    border-radius: 8px;
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 0.5px solid #ccc; /* Linha guia para corte */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: white;
+  }
+
+  /* Lado Esquerdo: Ícone */
+  .icon-area {
+    flex: 0 0 20%;
+    text-align: center;
+    font-size: 2.2rem;
+  }
+
+  /* Centro: Conteúdo */
+  .info-area {
+    flex: 1;
+    text-align: center;
+    padding: 0 5px;
+  }
+
+  .title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .tagline {
+    font-size: 0.65rem;
+    line-height: 1.2;
+    margin-bottom: 5px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
+    margin-bottom: 5px;
+    font-weight: 900;
+  }
+
+  /* Lado Direito: QR Code */
+  .qr-area {
+    flex: 0 0 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 32px 28px 28px;
-    position: relative;
-    transition: transform .25s, box-shadow .25s;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
   }
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.18);
-  }
-  .card .badge {
-    font-family: 'Fredoka One', cursive;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 99px;
-    margin-bottom: 14px;
-    opacity: .85;
-  }
-  .card .icon-wrap {
-    font-size: 3.2rem;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,.15));
-    animation: bounce 2s ease-in-out infinite;
-  }
-  @keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50%      { transform: translateY(-8px); }
-  }
-  .card .title {
-    font-family: 'Fredoka One', cursive;
-    font-size: 1.55rem;
-    text-align: center;
-    line-height: 1.2;
-    margin-bottom: 6px;
-  }
-  .card .tagline {
-    font-size: 0.92rem;
-    text-align: center;
-    font-weight: 700;
-    opacity: .75;
-    margin-bottom: 18px;
-    line-height: 1.45;
-    max-width: 240px;
-  }
-  .card .qr-wrap {
-    background: #fff;
-    border-radius: 16px;
-    padding: 10px;
-    box-shadow: 0 4px 16px rgba(0,0,0,.12);
-    margin-bottom: 14px;
-  }
-  .card .qr-wrap img {
-    display: block;
-    width: 110px;
-    height: 110px;
+
+  .qr-wrap {
+    background: white;
+    padding: 4px;
     border-radius: 6px;
   }
-  .card .cta {
-    font-family: 'Fredoka One', cursive;
-    font-size: 0.85rem;
-    letter-spacing: .5px;
-    text-align: center;
-    opacity: .8;
-    line-height: 1.4;
-  }
-  .card .stars {
-    font-size: 1rem;
-    margin-top: 6px;
-    letter-spacing: 2px;
-  }
-  /* deco shapes */
-  .card::before, .card::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    opacity: .18;
-    pointer-events: none;
-  }
-  .card::before { width: 120px; height: 120px; top: -40px; left: -40px; }
-  .card::after  { width: 80px;  height: 80px;  bottom: -25px; right: -25px; }
 
-  /* ====== CORES DOS CARDS ====== */
+  .qr-img {
+    width: 1.8cm;
+    height: 1.8cm;
+    display: block;
+  }
+
+  .cta-mini {
+    font-size: 0.45rem;
+    text-align: center;
+    margin-top: 3px;
+    font-weight: 700;
+  }
+
+  /* Cores (Mantendo sua identidade visual) */
   .c1 { background: linear-gradient(135deg,#1565c0,#42a5f5); color: #fff; }
   .c2 { background: linear-gradient(135deg,#1b5e20,#66bb6a); color: #fff; }
   .c3 { background: linear-gradient(135deg,#e65100,#ffb74d); color: #fff; }
   .c4 { background: linear-gradient(135deg,#4a148c,#ce93d8); color: #fff; }
   .c5 { background: linear-gradient(135deg,#880e4f,#f48fb1); color: #fff; }
-  .c6 { background: #fff; color: #1565c0; border: 3px solid #90caf9; }
+  .c6 { background: #ffffff; color: #1565c0; border: 1px solid #90caf9; }
   .c7 { background: linear-gradient(135deg,#f9a825,#fff176); color: #4e342e; }
   .c8 { background: linear-gradient(135deg,#006064,#4dd0e1); color: #fff; }
-  .c9 { background: #fff; color: #b71c1c; border: 3px solid #ef9a9a; }
+  .c9 { background: #ffffff; color: #b71c1c; border: 1px solid #ef9a9a; }
   .c10 { background: linear-gradient(135deg,#7b1fa2,#e91e63,#ff9800,#4caf50,#2196f3); color: #fff; }
 
-  .c1::before, .c1::after, .c2::before, .c2::after, .c3::before, .c3::after, 
-  .c4::before, .c4::after, .c5::before, .c5::after, .c8::before, .c8::after, 
-  .c10::before, .c10::after { background: #fff; }
-
-  .c6::before, .c6::after { background: #bbdefb; opacity: .6; }
-  .c9::before, .c9::after { background: #ffcdd2; opacity: .7; }
-  .c7::before, .c7::after { background: #fff9c4; }
-
   @media print {
-    body { padding: 10px; background: #fff; }
-    .grid { gap: 20px; }
-    .card { break-inside: avoid; }
-    .page-title, .subtitle { margin-bottom: 20px; }
+    body { background: white; padding: 0; }
+    .print-grid { gap: 5px; }
+    .card { box-shadow: none; border: 0.1mm solid #eee; } /* Linha bem clarinha para corte */
   }
 </style>
 </head>
 <body>
 
-<h1 class="page-title">🎮 Educ Games – Cartões de Anúncio</h1>
-<p class="subtitle">10 modelos prontos para divulgação — imprima ou compartilhe</p>
-
-<img id="qr-src" src="https://raw.githubusercontent.com/alvesdealmeida/cartaoEDUC/main/Plataforma.jpg" style="display:none"/>
-
-<div class="grid">
+<div class="print-grid">
   <div class="card c1">
-    <div class="badge">🎯 Educação Digital</div>
-    <div class="icon-wrap">🎮</div>
-    <div class="title">Educ Games<br>Educacional</div>
-    <div class="tagline">Aprenda jogando e se divertindo com a melhor plataforma educacional!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">📱 Aponte a câmera para o QR Code<br>e acesse agora!</div>
-    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="icon-area">🎮</div>
+    <div class="info-area">
+      <div class="badge">🎯 Educação Digital</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">Aprenda jogando e se divertindo com a melhor plataforma!</div>
+    </div>
+    <div class="qr-area">
+      <div class="qr-wrap"><img src="" class="qr-img"></div>
+      <div class="cta-mini">Aponte a câmera</div>
+    </div>
   </div>
 
   <div class="card c2">
-    <div class="badge">🌱 Aprender Brincando</div>
-    <div class="icon-wrap">📚</div>
-    <div class="title">Plataforma<br>Educ Games</div>
-    <div class="tagline">Jogos incríveis que transformam o aprendizado em diversão!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">🔍 Escaneie o QR Code<br>e venha aprender jogando!</div>
-    <div class="stars">🌟🌟🌟🌟🌟</div>
+    <div class="icon-area">📚</div>
+    <div class="info-area">
+      <div class="badge">🌱 Aprender Brincando</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">Jogos incríveis que transformam o aprendizado!</div>
+    </div>
+    <div class="qr-area">
+      <div class="qr-wrap"><img src="" class="qr-img"></div>
+      <div class="cta-mini">Escaneie aqui</div>
+    </div>
   </div>
 
   <div class="card c3">
-    <div class="badge">🔥 Novidade!</div>
-    <div class="icon-wrap">🏆</div>
-    <div class="title">Educ Games<br>Educacional</div>
-    <div class="tagline">A plataforma que une diversão e conhecimento de verdade!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">📲 Acesse pelo QR Code<br>e comece a jogar!</div>
-    <div class="stars">🎖️🎖️🎖️🎖️🎖️</div>
-  </div>
-
-  <div class="card c4">
-    <div class="badge">✨ Magia do Saber</div>
-    <div class="icon-wrap">🧠</div>
-    <div class="title">Plataforma<br>Educ Games</div>
-    <div class="tagline">Desafios, aventuras e muito conhecimento — tudo em um só lugar!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">📷 Escaneie e entre no mundo<br>do aprendizado divertido!</div>
-    <div class="stars">💫💫💫💫💫</div>
-  </div>
-
-  <div class="card c5">
-    <div class="badge">💖 Educação para Todos</div>
-    <div class="icon-wrap">🌈</div>
-    <div class="title">Educ Games<br>Educacional</div>
-    <div class="tagline">Aprendizado que diverte, conhecimento que transforma!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">📱 Use o QR Code e descubra<br>jogos educacionais incríveis!</div>
-    <div class="stars">🎀🎀🎀🎀🎀</div>
-  </div>
-
-  <div class="card c6">
-    <div class="badge">🚀 Futuro do Aprendizado</div>
-    <div class="icon-wrap">🎓</div>
-    <div class="title">Plataforma<br>Educ Games</div>
-    <div class="tagline">Tecnologia e educação juntas para criar uma experiência única!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">🔍 Acesse pelo QR Code<br>e venha se divertir aprendendo!</div>
-    <div class="stars">🚀🚀🚀🚀🚀</div>
-  </div>
-
-  <div class="card c7">
-    <div class="badge">☀️ Diversão Garantida</div>
-    <div class="icon-wrap">🎲</div>
-    <div class="title">Educ Games<br>Educacional</div>
-    <div class="tagline">Cada jogo é uma nova aventura cheia de aprendizado e alegria!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">📲 Escaneie o QR Code<br>e embarque nessa aventura!</div>
-    <div class="stars">☀️☀️☀️☀️☀️</div>
+    <div class="icon-area">🏆</div>
+    <div class="info-area">
+      <div class="badge">🔥 Novidade!</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">A união perfeita entre diversão e conhecimento!</div>
+    </div>
+    <div class="qr-area">
+      <div class="qr-wrap"><img src="" class="qr-img"></div>
+      <div class="cta-mini">Acesse agora</div>
+    </div>
   </div>
 
   <div class="card c8">
-    <div class="badge">💡 Inovação Educacional</div>
-    <div class="icon-wrap">🤖</div>
-    <div class="title">Plataforma<br>Educ Games</div>
-    <div class="tagline">Mergulhe em jogos inteligentes que expandem seus horizontes!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">📱 Aponte a câmera para o QR<br>e acesse a plataforma agora!</div>
-    <div class="stars">💡💡💡💡💡</div>
+    <div class="icon-area">🤖</div>
+    <div class="info-area">
+      <div class="badge">💡 Inovação</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">Mergulhe em jogos que expandem seus horizontes!</div>
+    </div>
+    <div class="qr-area">
+      <div class="qr-wrap"><img src="" class="qr-img"></div>
+      <div class="cta-mini">Leia o QR</div>
+    </div>
   </div>
 
-  <div class="card c9">
-    <div class="badge">❤️ Aprenda com Paixão</div>
-    <div class="icon-wrap">📖</div>
-    <div class="title">Educ Games<br>Educacional</div>
-    <div class="tagline">Transforme seus estudos em momentos de alegria e diversão!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">🔍 Escaneie o QR Code<br>e comece a aprender jogando!</div>
-    <div class="stars">❤️❤️❤️❤️❤️</div>
-  </div>
-
-  <div class="card c10">
-    <div class="badge">🎉 Plataforma Completa</div>
-    <div class="icon-wrap">🌍</div>
-    <div class="title">Educ Games<br>Educacional</div>
-    <div class="tagline">O universo educacional mais completo e divertido da internet!</div>
-    <div class="qr-wrap"><img src="" class="qr-img" alt="QR Code"></div>
-    <div class="cta">📲 Acesse via QR Code e entre<br>no mundo Educ Games!</div>
-    <div class="stars">🎉🎊🎈🎊🎉</div>
-  </div>
 </div>
 
+<img id="qr-src" src="https://raw.githubusercontent.com/alvesdealmeida/cartaoEDUC/main/Plataforma.jpg" style="display:none"/>
+
 <script>
-  // O JavaScript aguarda a página carregar, pega o link da imagem e injeta em todos os src vazios
   window.onload = function() {
     const qrSource = document.getElementById('qr-src').src;
-    const allQrImages = document.querySelectorAll('.qr-img');
-    
-    allQrImages.forEach(img => {
+    document.querySelectorAll('.qr-img').forEach(img => {
       img.src = qrSource;
     });
   };
