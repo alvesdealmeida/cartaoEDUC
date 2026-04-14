@@ -8,44 +8,37 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   
   body {
-    background: #f0f4ff;
+    background: #f4f7ff;
     font-family: 'Nunito', sans-serif;
     padding: 20px;
   }
 
-  /* Painel de Controle (não sai na impressão) */
   .controls {
     display: flex;
     justify-content: center;
-    gap: 15px;
     margin-bottom: 30px;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border-radius: 12px;
   }
 
-  .btn {
-    padding: 12px 24px;
+  .btn-print {
+    padding: 15px 30px;
     font-family: 'Fredoka One', cursive;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    background: #2563eb;
+    color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 50px;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
     transition: 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
-  .btn-print { background: #1565c0; color: white; }
-  .btn-print:hover { background: #0d47a1; }
+  .btn-print:hover { background: #1d4ed8; transform: scale(1.05); }
 
-  /* Grade de Cartões */
+  /* Grade com espaço para corte */
   .print-grid {
     display: grid;
     grid-template-columns: repeat(2, 9cm);
-    gap: 15px;
+    gap: 20px; /* ESPAÇO ENTRE OS CARTÕES */
     justify-content: center;
     max-width: 21cm;
     margin: 0 auto;
@@ -55,39 +48,41 @@
   .card {
     width: 9cm;
     height: 5cm;
-    border-radius: 5px;
+    border-radius: 4px;
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     padding: 12px;
     background: white;
-    border: 0.2mm solid #eee;
+    /* Guia de corte pontilhada */
+    border: 0.1mm dashed #bbb; 
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
 
-  .icon-area { flex: 0 0 18%; font-size: 2.2rem; text-align: center; }
+  .icon-area { flex: 0 0 18%; font-size: 2rem; text-align: center; }
   
   .info-area { 
     flex: 1; 
     text-align: center; 
-    padding: 0 8px;
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  .title { font-family: 'Fredoka One', cursive; font-size: 1.1rem; line-height: 1.1; margin-bottom: 4px; }
-  .tagline { font-size: 0.65rem; line-height: 1.2; font-weight: 700; margin-bottom: 5px; }
-  .badge { font-size: 0.5rem; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; background: rgba(255,255,255,0.3); margin-bottom: 5px; font-weight: 900; align-self: center; }
+  .title { font-family: 'Fredoka One', cursive; font-size: 1rem; line-height: 1.1; margin-bottom: 3px; }
+  .tagline { font-size: 0.6rem; line-height: 1.2; font-weight: 700; margin-bottom: 5px; opacity: 0.9; }
+  .badge { font-size: 0.45rem; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; background: rgba(255,255,255,0.3); margin-bottom: 5px; font-weight: 900; align-self: center; }
+  .stars { font-size: 0.6rem; margin-top: 2px; }
 
   .qr-area { flex: 0 0 25%; display: flex; flex-direction: column; align-items: center; }
-  .qr-wrap { background: white; padding: 4px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  .qr-wrap { background: white; padding: 3px; border-radius: 4px; }
   .qr-img { width: 1.8cm; height: 1.8cm; display: block; }
-  .cta-mini { font-size: 0.45rem; text-align: center; margin-top: 5px; font-weight: 800; }
+  .cta-mini { font-size: 0.45rem; text-align: center; margin-top: 4px; font-weight: 800; line-height: 1.1; }
 
-  /* Cores */
+  /* Cores Originais */
   .c1 { background: linear-gradient(135deg,#1565c0,#42a5f5); color: #fff; }
   .c2 { background: linear-gradient(135deg,#1b5e20,#66bb6a); color: #fff; }
   .c3 { background: linear-gradient(135deg,#e65100,#ffb74d); color: #fff; }
@@ -99,21 +94,18 @@
   .c9 { background: #fff; color: #b71c1c; border: 1px solid #ef9a9a; }
   .c10 { background: linear-gradient(135deg,#7b1fa2,#e91e63,#ff9800,#4caf50,#2196f3); color: #fff; }
 
-  /* Estilos de Impressão */
   @media print {
-    .controls { display: none; } /* Esconde os botões na hora de imprimir */
+    .controls { display: none; }
     body { background: white; padding: 0; margin: 0; }
-    .print-grid { gap: 0; margin: 0; }
-    .card { box-shadow: none; border: 0.1mm solid #ddd; }
+    .print-grid { gap: 15px; margin: 1cm auto; }
+    .card { box-shadow: none; }
   }
 </style>
 </head>
 <body>
 
 <div class="controls">
-  <button class="btn btn-print" onclick="window.print()">
-    🖨️ Imprimir Cartões ou Salvar PDF
-  </button>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimir Cartões (PDF)</button>
 </div>
 
 <div class="print-grid">
@@ -122,12 +114,10 @@
     <div class="info-area">
       <div class="badge">🎯 Educação Digital</div>
       <div class="title">Educ Games</div>
-      <div class="tagline">Aprenda jogando e se divertindo com a gente!</div>
+      <div class="tagline">Aprenda jogando e se divertindo com a melhor plataforma!</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
     </div>
-    <div class="qr-area">
-      <div class="qr-wrap"><img src="" class="qr-img"></div>
-      <div class="cta-mini">Aponte a câmera</div>
-    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Acesse agora</div></div>
   </div>
 
   <div class="card c2">
@@ -136,11 +126,9 @@
       <div class="badge">🌱 Aprender Brincando</div>
       <div class="title">Educ Games</div>
       <div class="tagline">Jogos incríveis que transformam o aprendizado!</div>
+      <div class="stars">🌟🌟🌟🌟🌟</div>
     </div>
-    <div class="qr-area">
-      <div class="qr-wrap"><img src="" class="qr-img"></div>
-      <div class="cta-mini">Escaneie o QR</div>
-    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Escaneie aqui</div></div>
   </div>
 
   <div class="card c3">
@@ -149,11 +137,9 @@
       <div class="badge">🔥 Novidade!</div>
       <div class="title">Educ Games</div>
       <div class="tagline">A plataforma que une diversão e conhecimento!</div>
+      <div class="stars">🎖️🎖️🎖️🎖️🎖️</div>
     </div>
-    <div class="qr-area">
-      <div class="qr-wrap"><img src="" class="qr-img"></div>
-      <div class="cta-mini">Acesse agora</div>
-    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Comece a jogar</div></div>
   </div>
 
   <div class="card c4">
@@ -162,23 +148,84 @@
       <div class="badge">✨ Magia do Saber</div>
       <div class="title">Educ Games</div>
       <div class="tagline">Desafios e aventuras em um só lugar!</div>
+      <div class="stars">💫💫💫💫💫</div>
     </div>
-    <div class="qr-area">
-      <div class="qr-wrap"><img src="" class="qr-img"></div>
-      <div class="cta-mini">Entre no mundo</div>
-    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Entre no mundo</div></div>
   </div>
 
+  <div class="card c5">
+    <div class="icon-area">🌈</div>
+    <div class="info-area">
+      <div class="badge">💖 Educação para Todos</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">Aprendizado que diverte e transforma!</div>
+      <div class="stars">🎀🎀🎀🎀🎀</div>
+    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Descubra mais</div></div>
   </div>
+
+  <div class="card c6">
+    <div class="icon-area">🎓</div>
+    <div class="info-area">
+      <div class="badge">🚀 Futuro do Aprendizado</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">Tecnologia e educação juntas!</div>
+      <div class="stars">🚀🚀🚀🚀🚀</div>
+    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Aponte a câmera</div></div>
+  </div>
+
+  <div class="card c7">
+    <div class="icon-area">🎲</div>
+    <div class="info-area">
+      <div class="badge">☀️ Diversão Garantida</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">Cada jogo é uma nova aventura!</div>
+      <div class="stars">☀️☀️☀️☀️☀️</div>
+    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Vem brincar</div></div>
+  </div>
+
+  <div class="card c8">
+    <div class="icon-area">🤖</div>
+    <div class="info-area">
+      <div class="badge">💡 Inovação</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">Mergulhe em jogos inteligentes!</div>
+      <div class="stars">💡💡💡💡💡</div>
+    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Leia o QR</div></div>
+  </div>
+
+  <div class="card c9">
+    <div class="icon-area">📖</div>
+    <div class="info-area">
+      <div class="badge">❤️ Paixão por Aprender</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">Transforme estudos em alegria!</div>
+      <div class="stars">❤️❤️❤️❤️❤️</div>
+    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Acesse já</div></div>
+  </div>
+
+  <div class="card c10">
+    <div class="icon-area">🌍</div>
+    <div class="info-area">
+      <div class="badge">🎉 Completa</div>
+      <div class="title">Educ Games</div>
+      <div class="tagline">O universo mais divertido da internet!</div>
+      <div class="stars">🎉🎊🎈🎊🎉</div>
+    </div>
+    <div class="qr-area"><div class="qr-wrap"><img src="" class="qr-img"></div><div class="cta-mini">Entre no mundo</div></div>
+  </div>
+</div>
 
 <img id="qr-src" src="https://raw.githubusercontent.com/alvesdealmeida/cartaoEDUC/main/Plataforma.jpg" style="display:none"/>
 
 <script>
   window.onload = function() {
     const qrSource = document.getElementById('qr-src').src;
-    document.querySelectorAll('.qr-img').forEach(img => {
-      img.src = qrSource;
-    });
+    document.querySelectorAll('.qr-img').forEach(img => { img.src = qrSource; });
   };
 </script>
 
